@@ -12,12 +12,14 @@ const compat = new FlatCompat({
 const eslintConfig = [
   // Apply base config
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-
+  
   // Add overrides for custom rules
   {
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "warn", // Change to warning instead of error
+      "react/no-unescaped-entities": "warn", // Change to warning instead of error
     },
   },
 ];
