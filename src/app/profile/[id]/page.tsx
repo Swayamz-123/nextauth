@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function UserProfile({ params }: { params: { id: string } }) {
+export default async function UserProfile({ 
+  params 
+}: { 
+  params: Promise<{ id: string }> 
+}) {
+  const { id } = await params;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-900 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative blurred background */}
@@ -17,7 +23,7 @@ export default function UserProfile({ params }: { params: { id: string } }) {
 
         <p className="text-purple-200 mb-2">Showing profile for:</p>
         <p className="text-white text-xl font-semibold break-all">
-          {params.id}
+          {id}
         </p>
 
         <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full opacity-60"></div>
